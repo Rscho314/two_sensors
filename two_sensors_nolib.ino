@@ -40,7 +40,6 @@ void setup() {
 void loop() {
   digitalWrite(BME_CS, LOW);
   bme.performReading();
-  Serial.print("bme: ");
   Serial.print(bme.temperature); //°C
   Serial.print(" ");
   Serial.print(bme.pressure); //Pa
@@ -50,16 +49,15 @@ void loop() {
   Serial.print(bme.gas_resistance); //Ohm
   Serial.print(" ");
   Serial.print(bme.readAltitude(SEA_LVL_P)); //m
-  Serial.println("");
   digitalWrite(BME_CS, HIGH);
-
+  
+  Serial.print(" ");
+  
   digitalWrite(MAX_CS, LOW);
-  Serial.print("max: ");
   Serial.print(maxthermo.readThermocoupleTemperature()); //°C
   Serial.print(" ");
-  Serial.print(maxthermo.readCJTemperature()); //°C
-  Serial.println("");
+  Serial.println(maxthermo.readCJTemperature()); //°C
   digitalWrite(MAX_CS, HIGH);
   
-  delay(750);
+  //delay(750);
 }
